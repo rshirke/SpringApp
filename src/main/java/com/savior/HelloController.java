@@ -26,13 +26,22 @@ public class HelloController {
 
     @RequestMapping(method = RequestMethod.GET)
     public String helloFacebook(Model model) {
+    	
+    	System.out.println("The Login request got hit..");
+    	
         if (connectionRepository.findPrimaryConnection(Facebook.class) == null) {
+        	System.out.println("Facebook object got created..");
         	
+//        	if(connectionRepository.findPrimaryConnection(Facebook.class).getApi().isAuthorized())
+//        	{
+//        		System.out.println("Facebook is authorized !!");
+//        	}
 //        	if(connectionRepository.getPrimaryConnection(Facebook.class).getApi().isAuthorized())
 //        	{
 //        	
 //        	}
         	
+        	System.out.println("About to redirect the page now to connnect/facebook without authentication");
             return "redirect:/connect/facebook";
         }
 
